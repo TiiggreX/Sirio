@@ -1,0 +1,16 @@
+:root {
+  --font-color: #fff;
+  --font-style: 'Roboto';
+  --background-color: #113;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto';
+  background-color: var(--background-color);
+  color: var(--font-color);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
