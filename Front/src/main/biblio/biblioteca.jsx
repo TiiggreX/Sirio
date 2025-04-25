@@ -4,7 +4,7 @@ function Biblioteca(){
   return(
     <main>
       <h2> Biblioteca </h2>
-      <BookContainer sctName={'Bibliotrca'} />
+      <BookContainer sctName={'Biblioteca'} />
     </main>
   );
 }

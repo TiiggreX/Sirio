@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "scripts": { 
+    "start" : "node Backend/server/server.js",
+    "react-start" : "npm run start --prefix Front",
+    "dev" : "concurrently \"npm run start \" \"npm run react-start \""
+  }
+}
