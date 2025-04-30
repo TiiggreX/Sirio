@@ -41,6 +41,7 @@ button:active {
     top: 5px;
     right: 5px;
     text-align: center;
+    border-top-right-radius: 0;
     z-index: 10;
 }
 
@@ -104,6 +105,8 @@ button:active {
     padding: 0 10%;
     font-size: 0.9em;
     text-align: justify;
+    font-style: oblique;
+    text-shadow: 0 0 10px #aaa;
 }
 
 .users-terms {
@@ -118,5 +121,5 @@ button:active {
 .terms {
     text-decoration: none;
     color: #fff;
-    margin: auto;
+    margin: 10px auto;
 }

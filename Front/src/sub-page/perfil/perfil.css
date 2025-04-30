@@ -76,3 +76,58 @@ h2 {
     background-color: #118;
     color: #fff;
 }
+
+/* POst - login */
+
+.post-login {
+    position: relative;
+    display: flex;
+    width: 60%;
+    height: 60%;
+    margin: 10% auto;
+    background-color: #113;
+    border: 2px solid #12f;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.post-login > .button-hidden {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 29px;
+    border-radius: 50%;
+}
+
+#user-image {
+    width: 10vw;
+    height: 10vw;
+    margin: 2vw;
+    border: 2px solid #12f;
+    border-radius: 50%;
+}
+
+#user-name {
+    width: fit-content;
+    max-width: 100%;
+    height: fit-content;
+    padding: 5px;
+    border: 2px solid #12f;
+    border-radius: 10px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+#user-description {
+    width: fit-content;
+    max-width: 100%;
+    height: fit-content;
+    padding: 5px;
+    border: 2px solid #12f;
+    border-radius: 10px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}

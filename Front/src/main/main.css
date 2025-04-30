@@ -1,6 +1,7 @@
 main {
-    width: 70%;
-    padding: 0;
+    position: relative;
+    width: 100%;
+    padding: 0 15%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -81,4 +82,49 @@ h2 {
     .book-info {
         border-right: 1px solid #12f;
     }
+}
+
+/* INICIO */
+
+.initial-text {
+    text-align: justify;
+    width: 90%;
+    font-style: oblique;
+    text-shadow: 0 0 10px #aaa;
+}
+
+#searchBook {
+    width: 80%;
+    padding: 0 5px;
+    height: 25px;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid #12f;
+    border-radius: 10px;
+    background-color: #118;
+    color: #fff;
+}
+
+#searchBook:focus {
+    outline: 1px solid #fff;
+    outline-offset: 1px;
+}
+
+/* Sistema de busqueda y herramientas del inicio */
+
+.initSearchSystem {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
+.listSistem {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.searchOptions {
+    margin: 10px;
 }
