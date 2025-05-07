@@ -8,12 +8,12 @@ const book = {
 }
 export const BookContainer = ({ sctName }) => {
   return(
-    <section className='book-container' >
+    <aside className='book-container' >
       <h3> {sctName} </h3>
       <div className='book-section' id='book-section' >
         <BookModule bookInfo={book} />
         <button id='add-button' > + </button>
       </div>
-    </section>
+    </aside>
   );
 }

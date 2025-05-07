@@ -19,12 +19,12 @@ function Inicio(){
   }, []); //array vacio para significado que se ejecuta una sola vez
 
   return(
-    <main>
+    <section>
       <InitSearchSystem />
       <h2>Inicio</h2>
       <input type="search" name="SearchBook" id="searchBook" placeholder='busqueda de libros' />
-      <p className="initial-text" >  { initext } </p>
-    </main>
+      <p className="initial-text" > { initext }  </p>
+    </section>
   );
 }
 

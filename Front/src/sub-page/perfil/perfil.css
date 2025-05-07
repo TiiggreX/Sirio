@@ -1,55 +1,20 @@
 #perfil {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-color: #0009;
+    height: calc(100vh - 82.88px);
+    border: 1px solid #12f;
+    border-top: 1px solid transparent;
+    background-image: linear-gradient(#113, #118, #118, #113);
     justify-content: center;
     box-sizing: border-box;
     z-index: 11;
 }
 
-/* Pre - Login */
+/* Inputs */
 
-.pre-login {
-    position: relative;
-    display: flex;
-    width: 60%;
-    height: 60%;
-    margin: 10% auto;
-    background-color: #113;
-    border: 2px solid #12f;
-    border-radius: 20px;
-    padding: 10px;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-h2 {
-    width: min-content;
-    margin: 10px auto;
-}
-
-.pre-login > .button-hidden {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 29px;
-    border-radius: 50%;
-}
-
-.pre-login > input:focus {
-    outline: 1px solid #fff;
-    outline-offset: 2px;
-}
-
-#userMail {
-    width: 200px;
+input {
     padding: 0 5px;
+    margin: 10px;
     height: 25px;
-    margin-top: 10px;
     text-align: center;
     border: 1px solid #12f;
     border-radius: 10px;
@@ -57,77 +22,102 @@ h2 {
     color: #fff;
 }
 
-#userMail:invalid {
+#userCheckMail {
+    width: 200px;
+}
+
+#userCheckMail:invalid {
     color: #f66;
 }
 
-#userMail:valid {
+#userCheckMail:valid {
     color: #6f6;
 }
 
-#userPassword {
+#userCheckPassword {
     width: 150px;
-    padding: 0 5px;
-    height: 25px;
     margin-top: 20px;
+}
+
+/* Login page */
+
+.login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #115;
+    border: 2px solid #12f;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.login-box > h3, .login-box > p {
+    font-size: 1.2em;
+    width: 100%;
+    text-align-last: left;
+    padding-left: 10px;
+}
+
+.loging-zone {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+}
+
+.loging-zone > *{
+    margin: auto;
+}
+
+/* Register page */
+
+.register {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+.register-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #115;
+    border: 2px solid #12f;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.register-box > h3, .register-box > p {
+    font-size: 1.2em;
+    width: 100%;
+    text-align-last: left;
+    padding-left: 10px;
+}
+
+#userGender {
+    padding: 0 5px;
+    margin: 10px;
+    height: 25px;
     text-align: center;
     border: 1px solid #12f;
     border-radius: 10px;
     background-color: #118;
     color: #fff;
-}
-
-/* POst - login */
-
-.post-login {
-    position: relative;
-    display: flex;
-    width: 60%;
-    height: 60%;
-    margin: 10% auto;
-    background-color: #113;
-    border: 2px solid #12f;
-    border-radius: 20px;
-    padding: 10px;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.post-login > .button-hidden {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 29px;
-    border-radius: 50%;
-}
-
-#user-image {
-    width: 10vw;
-    height: 10vw;
-    margin: 2vw;
-    border: 2px solid #12f;
-    border-radius: 50%;
-}
-
-#user-name {
-    width: fit-content;
-    max-width: 100%;
-    height: fit-content;
-    padding: 5px;
-    border: 2px solid #12f;
-    border-radius: 10px;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-}
-
-#user-description {
-    width: fit-content;
-    max-width: 100%;
-    height: fit-content;
-    padding: 5px;
-    border: 2px solid #12f;
-    border-radius: 10px;
-    box-sizing: border-box;
-    flex-wrap: wrap;
 }

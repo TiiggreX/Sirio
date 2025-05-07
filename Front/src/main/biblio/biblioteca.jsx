@@ -2,10 +2,10 @@ import { BookContainer } from "../sub-moduls/cont-book";
 
 function Biblioteca(){
   return(
-    <main>
+    <section>
       <h2> Biblioteca </h2>
       <BookContainer sctName={'Biblioteca'} />
-    </main>
+    </section>
   );
 }
 

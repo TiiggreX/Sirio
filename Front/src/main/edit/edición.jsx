@@ -1,9 +1,9 @@
 
 function Edición(){
   return(
-    <main>
+    <section>
       <h2>Edición</h2>
-    </main>
+    </section>
   );
 }
 

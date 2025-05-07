@@ -1,4 +1,10 @@
 main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+section {
     position: relative;
     width: 100%;
     padding: 0 15%;
@@ -19,11 +25,6 @@ h2 {
     border-radius: 10px;
 }
 
-.lazy-loading {
-    width: min-content;
-    font-size: 1.2em;
-}
-
 /* Book-Secction */
 
 .book-container {
@@ -31,6 +32,8 @@ h2 {
 }
 
 .book-section {
+    height: fit-content;
+    overflow-y: hidden;
     padding: 30px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -127,4 +130,19 @@ h2 {
 
 .searchOptions {
     margin: 10px;
+}
+
+/* Media querys */
+
+@media screen and (width <= 425px) {
+    section{
+        padding: 0 5px;
+        font-size: 0.8em;
+    }
+    .book-section {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-anchor: auto;
+        align-items: start;
+    }
 }

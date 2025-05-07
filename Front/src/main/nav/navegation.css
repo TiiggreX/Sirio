@@ -1,13 +1,18 @@
-header {
+.nav-bar-system {
     width: 100%;
     padding: 20px 5%;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     border: 1px solid #12f;
+    border-top: 0 solid;
     border-bottom: 3px solid #12f;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.nav-bar-system > a {
+    margin: auto;
 }
 
 button {
@@ -74,7 +79,7 @@ button:active {
     z-index: 9;
 }
 
-.nav-container  .title, .nav-container .object-list {
+.nav-container .object-list {
     padding: 0;
     display: flex;
     width: 100%;
@@ -94,7 +99,8 @@ button:active {
 }
 
 .title {
-    margin: 30px 0;
+    margin: 30px auto;
+    padding: 4px 15px;
 }
 
 .text-adjacent {

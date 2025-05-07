@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from 'react-router-dom'
 
-function Mostrar( id ){
-  document.getElementById(id).hidden = false;
-}
-
-export const NavBarLateral = ({ title }) => {
+export const NavBarLateral = () => {
   const [latText, iniLatText] = useState('')
 
   useEffect(() => {
@@ -25,20 +22,16 @@ export const NavBarLateral = ({ title }) => {
     <div className='page' id='nav-container' >
       <div className="nav-container" >
         <nav className="nav-bar">
-          <h1 className='title' > {title} </h1>
+          <h2 className='title' > Sirio </h2>
           <p className='text-adjacent' > { latText } </p>
           <ul className="list-container">
-            <li className='object-list' ><button className='option-nav' 
-              onClick={() =>
-                Mostrar('perfil')
-              }
-            > Perfil </button></li>
-            <li className='object-list' ><button className='option-nav' > Ajustes </button></li>
-            <li className='object-list' ><button className='option-nav' > Actividad </button></li>
+            <li className='object-list' ><Link to='/Perfil' ><button className='option-nav' > Perfil </button></Link></li>
+            <li className='object-list' ><Link to='/Ajustes' ><button className='option-nav' > Ajustes </button></Link></li>
+            <li className='object-list' ><Link to='/Actividad' ><button className='option-nav' > Actividad </button></Link></li>
           </ul>
           <div className='users-terms' id='users-terms' >
-            <a href="http://#" className='terms' > Politicas </a>
-            <a href="http://#" className='terms' > Seguriadad </a>
+            <Link className='terms' to='/Politicas' ><button> Politicas </button></Link>
+            <Link className='terms' to='/Terminos' ><button> Terminos </button></Link>
           </div>
         </nav>
       </div>

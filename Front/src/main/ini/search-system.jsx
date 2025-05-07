@@ -10,7 +10,7 @@ function OpenClose(id){
 
 export const InitSearchSystem = () => {
   return(
-    <section className='initSearchSystem' >
+    <aside className='initSearchSystem' >
       <nav className='navSistem' >
         <ul className='listSistem' >
           <li className='searchOptions' ><button
@@ -20,6 +20,6 @@ export const InitSearchSystem = () => {
           > Busqueda </button></li>
         </ul>
       </nav>
-    </section>
+    </aside>
   );
 }
