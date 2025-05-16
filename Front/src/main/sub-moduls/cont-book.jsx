@@ -1,18 +1,31 @@
+import {  useState } from "react";
 import { BookModule } from "./mod-book";
 
-const book = {
-  imag: 'IMG-20250323-WA0009.jpg',
-  name: 'The Darkest Side of the Shadows',
-  gender: 'Recuento de vida',
-  description: 'Is the Place we never wanted to know but everybody live it sometime'
-}
 export const BookContainer = ({ sctName }) => {
+  const [elements, setElements] = useState([])
+
+  const book ={
+    image: '',
+    name: '',
+    gender: '',
+    description: ''
+  }
+
+  const AddBook = () => {
+    const newElement = <BookModule key={elements.length} bookInfo={book} />
+    setElements([...elements, newElement]);
+  }
+
   return(
     <aside className='book-container' >
       <h3> {sctName} </h3>
       <div className='book-section' id='book-section' >
-        <BookModule bookInfo={book} />
-        <button id='add-button' > + </button>
+        {elements}
+        <button id='add-button' 
+          onClick={ 
+            AddBook
+          }
+        > + </button>
       </div>
     </aside>
   );

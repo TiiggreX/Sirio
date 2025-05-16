@@ -56,20 +56,42 @@ const AuthorizationToken = (req, res, next) => {
 
 //#endregion
 
+//#region: Reciclaje de funciones 
+
+function SearchUser(paramet, value){
+    db.get(`SELECT * FROM Users WHERE ? = ?`,
+        [paramet, value], 
+        function (err, user) {
+            if(err || !user){
+                console.error('Credenciales incorrectas')
+                return null
+            }
+            return user;
+        }
+    )
+}
+
+//#endregion
+
 //#region: Sistema de registro de usuarios a la plataforma
 app.post('/api/user/register', async (req, res) => {
     const data = req.body;
-    const hardpassword = await bcrypt.hash(data.Password, 10);
-    try{
-        db.run(`INSERT INTO Users (name, Password, Mail, Age, Gender) VALUES (?,?,?,?,?)`,[data.Name, hardpassword, data.Email, data.Age, data. Gender], function (err) {
-            if(err) throw err;
-            res.json({
-                id: this.lastID
+    if(SearchUser('Mail', data.Email) === null){
+        const hardpassword = await bcrypt.hash(data.Password, 10);
+        const description = 'Aquí va su descripcion de su perfil'
+        try{
+            db.run(`INSERT INTO Users (name, Password, Mail, Age, Gender, Description) VALUES (?,?,?,?,?,?)`,[data.Name, hardpassword, data.Email, data.Age, data. Gender, description], function (err) {
+                if(err) throw err;
+                res.json({
+                    id: this.lastID
+                })
             })
-        })
-    }catch (err) {
-        console.error("API /api/user/register error: ", err);
-        res.status(500).json({error: 'Failed to insert user'});
+        }catch (err) {
+            console.error("API /api/user/register error: ", err);
+            res.status(500).json({error: 'Failed to insert user'});
+        }
+    }if(SearchUser('Mail', data.Email) !== null){
+        res.json(null)
     }
 })
 console.log('...register listo')
@@ -78,7 +100,6 @@ console.log('...register listo')
 //#region: Sistea de autenticación de usuarios y acceso a su perfil en la plataforma
 app.post(`/api/user/login`, (req, res) => {
     const { Email , Password } = req.body;
-    console.log( Email, ' ', Password );
     db.get(`SELECT * FROM Users WHERE Mail = ?`,
         [Email],
         async (err, user) => {
@@ -97,12 +118,24 @@ app.post(`/api/user/login`, (req, res) => {
                 password: user.Password, 
                 mail: user.Email, 
                 age: user.Age, 
-                gender: user.Gender 
+                gender: user.Gender,
+                description: user.Description,
+                socialNetworks: user.SocialNetworks
             }, KEY , {
                 expiresIn: '1h'
             })
             res.json({ token })
-        console.log({ token })
+            const usuario = {
+                id: user.IdUser, 
+                name: user.Name, 
+                password: user.Password, 
+                mail: user.Mail, 
+                age: user.Age, 
+                gender: user.Gender, 
+                description: user.Description, 
+                socialNetworks: user.SocialNetworks
+            }
+            console.log( usuario );
         }
     )
 })

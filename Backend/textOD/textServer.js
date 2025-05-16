@@ -1,9 +1,13 @@
+//#region: Dependencias
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+//#endregion
 
+//#region: Archivos
 const textFilePath = path.join(__dirname, './textoPlano', 'text_1.txt') //Texto de la pagina de inicio
 const textFilePath2 = path.join(__dirname, './textoPlano', 'text_2.txt') //Texto de la barra lateral
+//#endregion
 
 const text =  fs.readFileSync(textFilePath, 'utf-8', (err) => { if(err) throw err })  //Aqui carga el archivo de la ruta pre-cargada y gestiona los errores del archivo
 const text_2 = fs.readFileSync(textFilePath2, 'utf-8', (err) => { if(err) throw err })

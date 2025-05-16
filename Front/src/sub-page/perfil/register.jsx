@@ -1,6 +1,4 @@
-
-function Register({ id , setId }){
-  
+function Register({ setUser }){
   const sendDats = async () => {
     const datos = {
           'Name': document.getElementById('userName').value,
@@ -15,8 +13,13 @@ function Register({ id , setId }){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(datos)
       })
-      const dato = await response.json();
-      setId(dato.id);
+      if(response !== null){
+        const dato = await response.json();
+        setUser(dato);
+        localStorage.setItem('usuario', JSON.stringify(datos))
+      } else {
+        alert('Credenciales incorretas')
+      }
     } catch (err) {
       alert('Error en el intercambio de información.....');
       throw err;
