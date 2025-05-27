@@ -1,14 +1,20 @@
 .nav-bar-system {
-    width: 100%;
-    padding: 20px 5%;
-    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 5px 10px 5px;
     display: flex;
     justify-content: center;
-    border: 1px solid #12f;
-    border-top: 0 solid;
-    border-bottom: 3px solid #12f;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border: 5px solid #12f;
+    border-top: 0px solid #12f;
+    border-bottom: 1px solid #12f;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: #113;
+    box-shadow: #000;
+    z-index: 4;
+    box-sizing: border-box;
 }
 
 .nav-bar-system > a {
@@ -17,17 +23,17 @@
 
 button {
     color: #fff;
-    background-image: radial-gradient(#12f,#113);
-    border: 2px solid transparent;
+    background-color: #113;
+    border: 1px solid #fff;
     border-radius: 15px;
-    padding: 5px 7px;
+    padding: 7px 9px;
     text-decoration: none;
     margin: auto;
     text-align: center;
 }
 
 button:hover {
-    background-image: radial-gradient(#113, #12f);
+    background-image: radial-gradient(#12f,#113, #000);
     border-color: #12f;
     outline: 2px solid #fff;
     outline-offset: 1px;
@@ -35,8 +41,8 @@ button:hover {
 
 button:active {
     border-color: #fff;
-    outline: 2px solid #12f;
-    outline-offset: 1px;
+    outline: 1px solid #12f;
+    outline-offset: 0;
     color: #fff;
     background-color: #12f;
 }
@@ -64,7 +70,7 @@ button:active {
 }
 
 .nav-container {
-    width: 40%;
+    width: 50%;
     position: absolute;
     top: 0;
     right: 0;
@@ -76,6 +82,7 @@ button:active {
     border-left: 3px solid #21e;
     border-bottom-left-radius: 50px;
     box-sizing: border-box;
+    
     z-index: 9;
 }
 

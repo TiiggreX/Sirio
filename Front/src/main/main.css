@@ -24,6 +24,7 @@ h2 {
     background-image: linear-gradient(#113, #113,#113, #12f);
     border-bottom: 2px solid #12f;
     border-radius: 10px;
+    margin: 15px;
 }
 
 /* Book-Secction */
@@ -113,10 +114,20 @@ h2 {
 /* INICIO */
 
 .initial-text {
+    margin: 0;
     text-align: justify;
     width: 90%;
+    max-height: 0;
+    overflow: hidden;
     font-style: oblique;
     text-shadow: 0 0 10px #aaa;
+    transition: max-height 0.5s;
+}
+
+.IniHeader:hover + .initial-text, 
+.IniHeader:hover ~ .initial-text {
+    margin: 15px;
+    max-height: fit-content;
 }
 
 #searchBook {
@@ -129,6 +140,7 @@ h2 {
     border-radius: 10px;
     background-color: #118;
     color: #fff;
+    transition: position 0.5s;
 }
 
 #searchBook:focus {

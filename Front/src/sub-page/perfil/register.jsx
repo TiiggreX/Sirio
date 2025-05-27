@@ -1,7 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
+function IgualUser(user){
+  return ({
+    id: user[0],
+    name: user[1],
+    password: user[2],
+    email: user[3],
+    age: user[4],
+    gender: user[5], 
+    description: user[6],
+    image: user[7], 
+    socialNetworks: user[8]
+  })
+}
 function Register({ setUser }){
+  const navigate = useNavigate()
   const sendDats = async () => {
     const datos = {
-          'Name': document.getElementById('userName').value,
+          Name: document.getElementById('userName').value,
           Password: document.getElementById('userPassword').value,
           Email: document.getElementById('userMail').value,
           Age: document.getElementById('userAge').value,
@@ -15,8 +31,11 @@ function Register({ setUser }){
       })
       if(response !== null){
         const dato = await response.json();
-        setUser(dato);
-        localStorage.setItem('usuario', JSON.stringify(datos))
+        const user = Object.values(dato)
+        alert( IgualUser(user) )
+        setUser( IgualUser(user) )
+        localStorage.setItem('usuario', JSON.stringify(IgualUser(user)))
+        navigate('/Perfil');
       } else {
         alert('Credenciales incorretas')
       }

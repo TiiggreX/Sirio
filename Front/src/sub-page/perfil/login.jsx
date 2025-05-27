@@ -20,8 +20,8 @@ function Login({ setUser }){
         throw new Error(fallo.error || 'Credenciales incorrectas')
       }
       const { token } = await respuesta.json()
-      const decoded = JSON.stringify(jwtDecode(token)).split(',')
-      const user = JSON.parse(decoded);
+      const decoded = jwtDecode(token)
+      const user = decoded.usuario;
       navigate('/Perfil');
       if(user){
         setUser(user)

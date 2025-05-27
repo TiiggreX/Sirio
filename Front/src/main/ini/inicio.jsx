@@ -1,12 +1,8 @@
-import { InitSearchSystem } from "./search-system";
 import { useState } from "react";
 import { useEffect } from "react";
+import { SearchBar } from '../sub-moduls/serchBar'
 
-function Inicio(){
-  const [initext, setIniText] = useState('')
-
-  useEffect(() => {
-    const datos = async () => {
+const datos = async ({ setIniText }) => {
       try {
         const respuesta = await fetch('http://localhost:5000/api/text');  //direccion de la informacion en el servidor backend
         const datos = await respuesta.json();  //convertir la respuesta a formato json, importante los parentesis
@@ -15,15 +11,19 @@ function Inicio(){
         throw err
       }
     }
-    datos();
+
+function Inicio(){
+  const [initext, setIniText] = useState('')
+
+  useEffect(() => {
+    datos({ setIniText });
   }, []); //array vacio para significado que se ejecuta una sola vez
 
   return(
     <section>
-      <InitSearchSystem />
-      <h2>Inicio</h2>
-      <input type="search" name="SearchBook" id="searchBook" placeholder='busqueda de libros' />
+      <h2 className="IniHeader"  >Inicio</h2>
       <p className="initial-text" > { initext }  </p>
+      <SearchBar />
     </section>
   );
 }

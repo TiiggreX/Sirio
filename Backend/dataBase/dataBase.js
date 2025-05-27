@@ -1,148 +1,29 @@
-//#region: Dependencias
 const express = require('express');
 const app = express();
-const path = require('path');
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const bodyParser = require('body-parser');
-const { error } = require('console');
-const sqlite = require('sqlite3').verbose()
+const db = require('./searchdataBase/searchDataBase')
 
-const db_path = path.resolve(__dirname, '../dataBase/Users.db');
-const KEY = 'pwPqD9Rn';
+const Segurity = require('./segurity/segurity')
 
-app.use(bodyParser.json());
-//#endregion
+// Endpoint de registro de usuario
+const Register = require('./register/register')
 
-//#region: Abrir la base de datos y acceder a sus datos
-const db = new sqlite.Database(
-    db_path,
-    sqlite.OPEN_READWRITE,
-    (err) => {
-    if(err) {console.log(err.message); throw err};
-    console.log(db)
-})
-
-console.log('...base de datos encontrada')
-
-const sql_create = `CREATE TABLE IF NOT EXISTS "Users" (
-    "IdUser"	INTEGER,
-    "Name"	TEXT,
-    "Password"	TEXT,
-    "Mail"	TEXT,
-    "Age"	INTEGER,
-    "Gender"	TEXT,
-    PRIMARY KEY("IdUser" AUTOINCREMENT)
-)`
-db.run(sql_create, (err) => {
-    if(err) throw err;
-    console.log('...base de datos lista')
-})
-//#endregion
-
-//#region: Seguridad de comunicación, autorización y encriptamiento
-const AuthorizationToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    if(!token) return res.sendStatus(401);
-
-    jwt.verify(token, KEY, (err, user) => {
-        if(err) return sendStatus(403);
-        req.user = user;
-        next();
-    });
-};
-
-//#endregion
-
-//#region: Reciclaje de funciones 
-
-function SearchUser(paramet, value){
-    db.get(`SELECT * FROM Users WHERE ? = ?`,
-        [paramet, value], 
-        function (err, user) {
-            if(err || !user){
-                console.error('Credenciales incorrectas')
-                return null
-            }
-            return user;
-        }
-    )
-}
-
-//#endregion
-
-//#region: Sistema de registro de usuarios a la plataforma
 app.post('/api/user/register', async (req, res) => {
-    const data = req.body;
-    if(SearchUser('Mail', data.Email) === null){
-        const hardpassword = await bcrypt.hash(data.Password, 10);
-        const description = 'Aquí va su descripcion de su perfil'
-        try{
-            db.run(`INSERT INTO Users (name, Password, Mail, Age, Gender, Description) VALUES (?,?,?,?,?,?)`,[data.Name, hardpassword, data.Email, data.Age, data. Gender, description], function (err) {
-                if(err) throw err;
-                res.json({
-                    id: this.lastID
-                })
-            })
-        }catch (err) {
-            console.error("API /api/user/register error: ", err);
-            res.status(500).json({error: 'Failed to insert user'});
-        }
-    }if(SearchUser('Mail', data.Email) !== null){
-        res.json(null)
-    }
+    await Register(req, res)
 })
-console.log('...register listo')
-//#endregion
 
-//#region: Sistea de autenticación de usuarios y acceso a su perfil en la plataforma
-app.post(`/api/user/login`, (req, res) => {
-    const { Email , Password } = req.body;
-    db.get(`SELECT * FROM Users WHERE Mail = ?`,
-        [Email],
-        async (err, user) => {
-            if(err || !user){
-                return res.status(400).json({ error: 'Credenciales invalidas' })
-            };
-            console.log('usuario correcto...');
-            const validacion = await bcrypt.compare(Password, user.Password);
-            if(!validacion){
-                return res.status(400).json({ error: 'Credenciales invalidas' })
-            }
-            console.log('contraseña y validacion correctas...');
-            const token = jwt.sign({ 
-                id: user.IdUser, 
-                name: user.Name, 
-                password: user.Password, 
-                mail: user.Email, 
-                age: user.Age, 
-                gender: user.Gender,
-                description: user.Description,
-                socialNetworks: user.SocialNetworks
-            }, KEY , {
-                expiresIn: '1h'
-            })
-            res.json({ token })
-            const usuario = {
-                id: user.IdUser, 
-                name: user.Name, 
-                password: user.Password, 
-                mail: user.Mail, 
-                age: user.Age, 
-                gender: user.Gender, 
-                description: user.Description, 
-                socialNetworks: user.SocialNetworks
-            }
-            console.log( usuario );
-        }
-    )
+//Endpoint de autenticación de usuarios y acceso a su perfil en la plataforma
+const Login = require('./login/login')
+
+app.post(`/api/user/login`, async (req, res) => {
+    await Login(req, res)
 })
-//#endregion
 
-//#region: Cierre y exportacion
-console.log('...usuarios listos')
+//Endpoint para modificar perfil de usuario
+const Update = require('./update/update')
 
+app.patch(`/api/user/update`, async (req, res) => {
+    await Update(req, res)
+})
+
+// Cierre y exportacion
 module.exports = app
-//#endregion
