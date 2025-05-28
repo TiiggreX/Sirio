@@ -76,13 +76,12 @@ button:active {
     right: 0;
     padding: 15px 5px;
     justify-content: center;
-    background-color: #113b;
+    background-color: #113;
     border: 1px solid #21e;
     border-bottom: 1px solid #21e;
     border-left: 3px solid #21e;
     border-bottom-left-radius: 50px;
     box-sizing: border-box;
-    
     z-index: 9;
 }
 
@@ -99,27 +98,38 @@ button:active {
     list-style: none;
     padding: 0;
     margin: 0;
+    background-color: #113;
 }
 
 .object-list {
     margin: 20px 0;
+    background-color: #113;
 }
 
 .title {
-    margin: 30px auto;
+    margin: 30px auto 10px auto;
     padding: 4px 15px;
 }
 
 .text-adjacent {
     width: 100%;
     margin: 0;
-    margin-bottom: 30px;
+    max-height: 0;
     box-sizing: border-box;
     padding: 0 10%;
     font-size: 0.9em;
+    overflow: hidden;
     text-align: justify;
     font-style: oblique;
     text-shadow: 0 0 10px #aaa;
+    transition: max-height 0.5s, margin 0.5s;
+    interpolate-size: allow-keywords;
+}
+
+.title:hover + .text-adjacent,
+.title:hover ~ .text-adjacent {
+    margin: 35px 0;
+    max-height: fit-content;
 }
 
 .users-terms {

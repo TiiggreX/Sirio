@@ -31,11 +31,11 @@ h2 {
 
 .book-container {
     width: 100%;
+    margin-bottom: 25px;
 }
 
 .book-section {
     height: fit-content;
-    overflow-y: hidden;
     padding: 30px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -115,13 +115,15 @@ h2 {
 
 .initial-text {
     margin: 0;
+    padding: 0 5px;
     text-align: justify;
     width: 90%;
     max-height: 0;
     overflow: hidden;
     font-style: oblique;
     text-shadow: 0 0 10px #aaa;
-    transition: max-height 0.5s;
+    transition: max-height 0.5s, margin 0.5s;
+    interpolate-size: allow-keywords;
 }
 
 .IniHeader:hover + .initial-text, 

@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/Front/node_modules
+/Sirio/node_modules
 /Backend/node_modules
 /.pnp
 .pnp.js

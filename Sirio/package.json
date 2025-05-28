@@ -1,6 +1,6 @@
 {
-  "name": "Sirio",
-  "version": "0.3.0",
+  "name": "sirio",
+  "version": "0.3.1",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
