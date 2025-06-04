@@ -11,6 +11,8 @@
 /coverage
 
 # production
+(..Important..)
+/(..Important..)/.json
 /Books
 /build
 
@@ -20,7 +22,13 @@
 .env.development.local
 .env.test.local
 .env.production.local
+*.db
+*.docx
+*.tmp
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#data base
+/Backend/dataBase/

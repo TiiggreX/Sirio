@@ -25,6 +25,7 @@ h2 {
     border-bottom: 2px solid #12f;
     border-radius: 10px;
     margin: 15px;
+    transition: all 0.5s;
 }
 
 /* Book-Secction */
@@ -111,11 +112,87 @@ h2 {
     margin: 5px;
 }
 
+/* User Section */
+
+.userList {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 5px 40px;
+    flex-grow: 1;
+    justify-content: left;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+@media screen and (width > 768px) {
+    .userList {
+        justify-content: center;
+    }
+}
+
+.UserContaniner {
+    display: flex;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 160px;
+    padding: 0 5px;
+    margin: 0 10px;
+    text-align: left;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    border-bottom-left-radius: 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
+}
+
+.UserContaniner > * {
+    transition: max-height 0.3s;
+    interpolate-size: allow-keywords;
+}
+
+.contentUserDescription {
+    max-height: 0;
+    overflow: hidden;
+    text-shadow: 0 0 10px #aaa;
+}
+
+.UserContaniner:hover {
+    border-color: #12f;
+    background-color: #115;
+    border-radius: 20px;
+    .contentUserAge {
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .contentUserGender {
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .contentUserDescription {
+        max-height: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
 /* INICIO */
+
+.Inicio {
+    padding: 0;
+}
+
+.SearchBox {
+    width: 100%;
+    align-items: center;
+}
 
 .initial-text {
     margin: 0;
-    padding: 0 5px;
+    padding: 0 15%;
     text-align: justify;
     width: 90%;
     max-height: 0;
@@ -124,6 +201,13 @@ h2 {
     text-shadow: 0 0 10px #aaa;
     transition: max-height 0.5s, margin 0.5s;
     interpolate-size: allow-keywords;
+    box-sizing: border-box;
+}
+
+.IniHeader:hover {
+    background-image: linear-gradient(#12f, #24f, #24f, #24f);
+    color: #113;
+    font-style: italic;
 }
 
 .IniHeader:hover + .initial-text, 
@@ -220,5 +304,17 @@ h2 {
     .book {
         width: 280px;
         height: 90px;
+    }
+}
+
+@media screen and ( width < 426px ) {
+    .book {
+        width: 300px;
+    }
+    #add-button {
+        margin: 45px 60px;
+    }
+    #Edicion #book-section #CreateBook {
+        margin: 45px 60px;
     }
 }

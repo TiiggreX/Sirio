@@ -24,8 +24,13 @@ header {
 }
 
 .Title {
+  width: fit-content;
   margin-left: 20px;
-  text-decoration: underline ;
+  font-family: "Lucida Sans";
+  padding: 5px 17px;
+  border-radius: 15px 50%;
+  border: 1px solid #fff;
+  background-color: #114;
 }
 
 main {

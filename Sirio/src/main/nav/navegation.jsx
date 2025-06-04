@@ -1,14 +1,13 @@
 import './navegation.css'
-import Button from "./sub-modules/boton-nav";
-import { Link } from 'react-router-dom';
-import '../../sub-page/perfil/perfil.css'
+import { LinkButton } from '../../components/buttonNav';
+import '../../main/pages/perfil/perfil.css'
 
 function Nav(){
   return(
     <nav className='nav-bar-system' >
-      <Link to="/" ><Button text={'Inicio'} /></Link>
-      <Link to="/Biblioteca" ><Button text={'Biblioteca'} /></Link>
-      <Link to="/Edicion" ><Button text={'Edicion'} /></Link>
+      <LinkButton text={'Inicio'} to={'/'} />
+      <LinkButton text={'Biblioteca'} to={"/Biblioteca"} />
+      <LinkButton text={'Edición'} to={"/Edicion"} />
     </nav>
   );
 }
