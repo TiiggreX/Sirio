@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Edición from "./edición"
-import InterfasCreateBook from "./createseccion"
+import InterfasCreateBook from "./creación/createseccion"
 
 const EdiciónRender = () => {
   return(

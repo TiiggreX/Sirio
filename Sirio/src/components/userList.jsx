@@ -1,28 +1,14 @@
 import { SearchBar } from './serchBar'
 import { useState, useEffect } from 'react'
 import { ContentUser } from './userContainer'
-//import { GetUsers } from '../api/get'
-
-const GetUsers = async ({ setList, setRender}) => {
-  try{
-    const respuesta = await fetch('http://localhost:5000/api/user/showdata')
-    if(!respuesta.ok){
-      throw new Error('Error detectado: ', respuesta.status)
-    }
-    const data = await respuesta.json();
-    setList( data )
-    setRender( data )
-  } catch (err) {
-    throw err
-  }
-}
+import { GetUsers } from '../api/get'
 
 function UserList(){
   const [list, setList] = useState()
   const [render, setRender] = useState(null)
-
+  const endpoint = 'http://localhost:5000/api/user/showdata'
   useEffect(() => {
-    GetUsers({ setList, setRender })
+    GetUsers({ setList, setRender, endpoint })
   }, [])
 
   return(
@@ -33,9 +19,9 @@ function UserList(){
           <ContentUser 
           key={render.IdUser} 
           nombre={render.Name} 
-          edad={render.Age} 
-          genero={render.Gender} 
-          description={render.Description} />
+          description={render.Description} 
+          likes={render.Likes} 
+          comentarios={render.Comentarios} />
         )) : (<div className='NotFound'> No hay Usuarios </div>)}
       </div>
     </aside>

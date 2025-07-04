@@ -70,18 +70,26 @@ h2 {
     padding: 10px;
     text-align: center;
     justify-content: center;
+    background-color: #114;
     border: 1px solid #fff;
     border-radius: 10px;
     margin: 10px;
     box-sizing: border-box;
 }
 
-.book-image {
-    display: inline-block;
+#book-link {
+    display: flex;
     width: 25%;
+    margin-right: 5%;
+}
+
+#book-link > .book-image {
+    display: inline-block;
+    width: 100%;
     height: 100%;
     margin-right: 5%;
     border: 1px solid #fff;
+    background-color: #000;
     border-radius: 10px;
 }
 
@@ -89,23 +97,17 @@ h2 {
     display: inline-block;
     width: 60%;
     height: 90%;
-    margin: auto auto;
+    margin: 0 auto 0 0;
     font-size: 0.8em;
     text-align: left;
-    border-right: 1px solid #fff;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 .book:hover {
     border: 1px solid #12f;
-    .book-image {
-        border: 1px solid #12f;
-        outline: 3px solid #12f;
-    }
-    .book-info {
-        border-right: 1px solid #12f;
-    }
+}
+
+.book:hover > #book-link > .book-image {
+    border: 1px solid #12f;
 }
 
 .book p {
@@ -119,64 +121,68 @@ h2 {
     list-style: none;
     width: 100%;
     margin: 0;
-    padding: 5px 40px;
-    flex-grow: 1;
+    padding: 5px;
     justify-content: left;
     box-sizing: border-box;
     overflow-x: auto;
 }
-
 @media screen and (width > 768px) {
     .userList {
+        padding: 5px 40px;
         justify-content: center;
     }
 }
-
 .UserContaniner {
     display: flex;
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 300px;
+    max-width: 300px;
     min-height: 160px;
-    padding: 0 5px;
-    margin: 0 10px;
+    padding: 0 0 0 10px;
+    margin: 0 15px 0 5px;
     text-align: left;
-    border-left: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    border-bottom-left-radius: 20px;
-    box-sizing: border-box;
-    transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
-}
-
-.UserContaniner > * {
-    transition: max-height 0.3s;
-    interpolate-size: allow-keywords;
-}
-
-.contentUserDescription {
-    max-height: 0;
-    overflow: hidden;
-    text-shadow: 0 0 10px #aaa;
-}
-
-.UserContaniner:hover {
-    border-color: #12f;
-    background-color: #115;
+    border: 1px solid #fff;
     border-radius: 20px;
-    .contentUserAge {
-        margin: 0;
-        max-height: 0;
-        overflow: hidden;
+    box-sizing: border-box;
+} 
+@media screen and (width > 768px) {
+    .UserContaniner {
+        margin: 0 15px;
     }
-    .contentUserGender {
-        margin: 0;
-        max-height: 0;
-        overflow: hidden;
-    }
-    .contentUserDescription {
-        max-height: 100%;
-        text-align: center;
-        justify-content: center;
-    }
+}
+.UserContaniner >  img {
+    background-color: #12f;
+    border: 1px solid #fff;
+    max-width: 40%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin: 10px 0 auto 0;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+.InfoContainer {
+    background-color: #114;
+    text-align: center;
+    padding: 1%;
+    margin: 2%;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    width: 60%;
+}
+.UserContaniner a {
+    font-style: normal;
+    text-decoration: none;
+    text-decoration-line: none;
+    color: #fff;
+}
+.contentUserDescription {
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+}
+.userActivityContainer {
+    width: 100%;
+    text-align: left;
+    margin: 0 20px;
+    box-sizing: border-box;
 }
 
 /* INICIO */
@@ -205,9 +211,8 @@ h2 {
 }
 
 .IniHeader:hover {
-    background-image: linear-gradient(#12f, #24f, #24f, #24f);
+    background-image: linear-gradient(#128, #24f, #24f, #24f, #128);
     color: #113;
-    font-style: italic;
 }
 
 .IniHeader:hover + .initial-text, 
@@ -228,29 +233,15 @@ h2 {
     color: #fff;
     transition: position 0.5s;
 }
-
 #searchBook:focus {
     outline: 1px solid #fff;
     outline-offset: 1px;
 }
 
-/* Sistema de busqueda y herramientas del inicio */
-
-.initSearchSystem {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px;
-}
-
-.listSistem {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.searchOptions {
-    margin: 10px;
+@media screen and ( width <= 425px ) {
+    #searchBook {
+        width: 70%;
+    }
 }
 
 /* Edicion */
@@ -259,34 +250,63 @@ h2 {
     width: fit-content;
 }
 
-.Constructor {
-    padding: 20px 40px;
+#CreateBook aside {
+    width: 90%;
+    margin: auto;
+    padding: 20px 10px;
     border-radius: 20px;
     border: 1px solid #12f;
+    box-sizing: border-box;
 }
 
-.campo {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: min-content;
-    border-right: 1px solid #12f;
-    border-radius: 25px;
-}
-
-.campo > input {
-    margin-top: 0;
-}
-
-#campo-portada {
+.Constructor {
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+}.Constructor * {
     width: 100%;
-    flex-direction: row;
+    box-sizing: border-box;
+    margin: 10px 0;
+}.Constructor > .Portada {
+    width: 50%;
+    height: 45dvw;
+    margin: auto;
+}.Portada > * {
+    height: 100%;
+    margin: 0;
+}.Constructor #Descripción {
+    min-width: 100%;
+    max-width: none;
+    margin: auto;
 }
 
-#campo-portada > input {
-    width: 20px;
-    height: 60px;
+@media screen and ( width > 425px ) {
+    .Constructor {
+        display: flex;
+    }.Constructor * {
+        width: 90%;
+        margin: 0 auto 10px auto;
+    }.Constructor > .Portada {
+        width: 80px;
+        height: 160px;
+        margin: 0 10px;
+    }.Portada > * {
+        width: 80px;
+        height: 160px;
+        margin: 0;
+    }.Constructor #Descripción {
+        min-width: 90%;
+        max-width: none;
+        margin: auto;
+    }
+}
+
+#edit-book-section {
+    position: absolute;
+    display: none;
+    width: 80dvw;
+    height: 80dvh;
+    background-color: #114;
 }
 
 /* Media querys */
@@ -311,8 +331,8 @@ h2 {
     .book {
         width: 300px;
     }
-    #add-button {
-        margin: 45px 60px;
+    #Edicion #add-button {
+        margin: 45px auto;
     }
     #Edicion #book-section #CreateBook {
         margin: 45px 60px;

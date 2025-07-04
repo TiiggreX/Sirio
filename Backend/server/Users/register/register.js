@@ -1,5 +1,5 @@
 const db = require('../../dataBase/searchdataBase/searchDataBase.js')
-const { PeticionDeDatos } = require('../../dataBase/searchInformation/searchInformation.js')
+const { PeticionDeDatos, CrearUsuario } = require('../../dataBase/searchInformation/searchInformation.js')
 const { ConstructUser } = require('./constructUser.js')
 
 async function Register(req, res){
@@ -12,10 +12,10 @@ async function Register(req, res){
                 //construir los datos del usuario
                 const datos = ConstructUser(data)
                 //guardar datos en la base de datos
-                db.run(`INSERT INTO Users (name, Password, Mail, Age, Gender, Description, Image, SocialNetworks) VALUES (?,?,?,?,?,?,?,?)`,
-                    [datos.Name, datos.password, datos.Email, datos.Age, datos.Gender, datos.description, datos.image, datos.socialNetworks],
+                db.run(CrearUsuario(datos),
                     async function (err) {
                     if(err) throw err;
+                    db.run(`INSERT INTO Activity (IdUser, Likes, Comentarios) VALUES (${this.lastID}, 0, 0)`)
                     //praparar la variable de retorno de datos al Front
                     db.get(PeticionDeDatos('*', 'Users', 'IdUser', this.lastID), async (err, user) => {
                         if(err) throw err;

@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom"
 
-export const ContentUser = ({ nombre, edad, genero, description }) => {
+export const ContentUser = ({ nombre, description, likes, comentarios }) => {
   return(
     <span className='UserContaniner' >
-        <div className='InfoContainer' >
-        <p className='contentUserName' > {`Nombre :`+ nombre } </p>
-        <p className='contentUserAge' > {`Edad : ${edad} `} </p>
-        <p className='contentUserGender' > {`Genero : ${genero} `} </p>
-        <p className='contentUserDescription' > {`Descrpción : ${description} `} </p>
+      <img src={'/'} alt="imagen de perfil" />
+      <div className='InfoContainer' >
+        <p className='contentUserName' ><Link> { nombre } </Link></p>
+        <p> likes: {likes} </p>
+        <p> comentarios: {comentarios} </p>
+        <p className="contentUserDescription" > { description } </p>
       </div>
     </span>
   )

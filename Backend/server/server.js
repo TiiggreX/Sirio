@@ -6,18 +6,18 @@ const PORT = process.env.PORT || 5000;
 const text = require('./text/textServer'); //importar y correr el servidor para mandar el texto al Front
 const appDb = require('./dataBase/dataBase')
 const user = require('./Users/users')
+const appBook = require('./bookSection/bookServer')
 //#endregion
 
 //#region: Permisibilidad de comunicacion ( client - server )
 app.use(express.json())
-// Ajustes a las politicas cors para que el servidor localhost:3000 acceda a los datos
+// Ajustes a las politicas cors para que el servidor localhost:5173 acceda a los datos
 const corsOptions = {
     origin: 'http://localhost:5173',
     method: ['GET', 'POST', 'PUT', 'PATCH' , 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }
 app.use(cors(corsOptions)); //aqui las politicas son agregadas
-console.log('...Listo')
 //#endregion
 
 //#region: Exportacion del servidor d texto
@@ -33,6 +33,10 @@ app.use('/',appDb);
 
 //#region: Trabajo con los datos de los usuarios
 app.use('/',user);
+//#endregion
+
+//#region: Trabajo con con los libros
+app.use('/', appBook)
 //#endregion
 
 //#region: Lineas Finales

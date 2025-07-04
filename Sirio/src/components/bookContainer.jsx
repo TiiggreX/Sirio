@@ -1,5 +1,5 @@
 import {  useState } from "react";
-import { BookModule } from "./bookModule";
+import { CreateBook } from "../functions/bookWork";
 
 export const BookContainer = ({ sctName }) => {
   const [elements, setElements] = useState([])
@@ -11,20 +11,15 @@ export const BookContainer = ({ sctName }) => {
     description: ''
   }
 
-  const AddBook = () => {
-    const newElement = <BookModule key={elements.length} bookInfo={book} />
-    setElements([...elements, newElement]);
-  }
-
   return(
     <aside className='book-container' >
       <h3> {sctName} </h3>
       <div className='book-section' id='book-section' >
         {elements}
         <button id='add-button' 
-          onClick={ 
-            AddBook
-          }
+          onClick={() => {
+            CreateBook({ book, elements, setElements })
+          }}
         > + </button>
       </div>
     </aside>

@@ -1,16 +1,13 @@
 .nav-bar-system {
-    position: sticky;
-    top: 0;
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px 5px 10px 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 15px 5px 15px 5px;
     display: flex;
     justify-content: center;
-    border: 5px solid #12f;
-    border-top: 0px solid #12f;
-    border-bottom: 1px solid #12f;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-top: 2px solid #12f;
+    border-radius: 15px;
     background-color: #113;
     box-shadow: #000;
     z-index: 4;
@@ -141,7 +138,7 @@ button:active {
     flex-wrap: wrap;
 }
 
-.terms {
+.users-terms > * {
     text-decoration: none;
     color: #fff;
     margin: 10px auto;

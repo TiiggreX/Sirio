@@ -2,9 +2,9 @@
   "dependencies": {
     "concurrently": "^9.1.2"
   },
-  "scripts": { 
-    "start" : "node Backend/server/server.js",
-    "react-start" : "npm run dev --prefix Sirio",
-    "dev" : "concurrently \"npm run start \" \"npm run react-start\""
+  "scripts": {
+    "start": "node Backend/server/server.js",
+    "react-start": "npm run dev --prefix Sirio",
+    "dev": "concurrently \"npm run start \" \"npm run react-start\""
   }
 }

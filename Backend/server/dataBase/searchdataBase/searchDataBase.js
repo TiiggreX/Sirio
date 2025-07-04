@@ -1,6 +1,6 @@
 const path = require('path')
 const sqlite = require('sqlite3').verbose()
-const { Users, Activity } = require('./comprobacion_db/show_db')
+const { Users, Activity, Book } = require('./comprobacion_db/show_db')
 
 const db = new sqlite.Database(
     path.join(__dirname, './../Users.db'),
@@ -35,9 +35,18 @@ const sql_Activity = `CREATE TABLE IF NOT EXISTS "Activity" (
 	FOREIGN KEY("IdUser") REFERENCES "Users"("IdUser")
 );`
 
+const sql_Book = `CREATE TABLE IF NOT EXISTS "Book" (
+	"IdBook"	INTEGER NOT NULL,
+	"Name"	TEXT,
+	"Gender"	TEXT,
+	"Description"	TEXT,
+	"IdUser"	INTEGER NOT NULL,
+	PRIMARY KEY("IdBook" AUTOINCREMENT),
+	FOREIGN KEY("IdUser") REFERENCES "Users"("IdUser")
+);`
+
 CreateTables(sql_Users)
-console.log(Users(db))
 CreateTables(sql_Activity)
-console.log(Activity(db))
+CreateTables(sql_Book)
 
 module.exports = db

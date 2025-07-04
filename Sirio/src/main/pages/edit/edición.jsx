@@ -1,36 +1,29 @@
-import { BookModule } from "../../../components/bookModule";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Create, RenderMyBook } from '../../../functions/bookWork'
+import { EditBook } from "./edicion/editbook";
+import { PostMyBooks } from '../../../api/post'
 
 function Edición(){
-  const [elements, setElements] = useState([])
+  const user = JSON.parse(localStorage.getItem('usuario'))
+  const [elements, setElements] = useState( null )
   const navigate = useNavigate();
 
-  const [book ={
-    image: '',
-    name: '',
-    gender: '',
-    description: ''
-  }, setBook] = useState();
-
-  const CreateBook = () => {
-    navigate('/Edicion/CreateSeccion')
-    const newElement = <BookModule key={elements.length} bookInfo={book} />
-    setElements([...elements, newElement]);
-  }
+  useEffect(() => {
+    PostMyBooks({ user, setElements })
+  },[])
 
   return(
     <section id="Edicion" >
-      <h2>Edición</h2>
+      <EditBook />
       <aside className='book-container' >
         <h3> Seccion de Edición </h3>
         <div className='book-section' id='book-section' >
-          {elements}
-          <button id='add-button' 
-            onClick={ 
-              CreateBook
-            }
-          > Crear </button>
+          { elements !== null ? 
+          ( <> 
+              <RenderMyBook render={elements} /> 
+            </> ) : ( <> ...Cargando </> ) }
+          <Create navigate={navigate} />
         </div>
       </aside>
     </section>

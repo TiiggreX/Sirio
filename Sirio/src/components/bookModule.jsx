@@ -1,15 +1,19 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 //Componente que sufrira reduccion de datos en pantalla para dejarlo para una posterior interfaz al abrir los libros
+import { OpenEditZone } from "../functions/openEdit";
 
-export const BookModule = ({ bookInfo }) => {
-  //const imageDir = require('../../resours/ports/' + bookInfo.image)
+export function BookModule({ element = [] }){
+  //const imageDir = require('../../resours/ports/' + elements.image)
   return(
     <div className='book' >
-      <img /* src={imageDir} */ alt={bookInfo.image} className='book-image' />
+      <div id='book-link' /*onClick={() => {
+        OpenEditZone(element)
+      }}*/ >
+        <img /* src={imageDir} */ alt={element.Name} className='book-image' />
+      </div>
       <div className='book-info' >
-        <p className="book-name"> {'Nombre: ' + bookInfo.name} </p>
-        <p className="book-gender"> {'Genero: ' + bookInfo.gender} </p>
-        <p className="book-description" hidden > {'Descripción: ' + bookInfo.description} </p>
+        <p className="book-name"> {`Nombre: ${element.Name}`} </p>
+        <p className="book-gender"> {`Genero: ${element.Gender}`} </p>
+        <p className="book-description" > {`Descripción: ${element.Description}`} </p>
       </div>
     </div>
   );

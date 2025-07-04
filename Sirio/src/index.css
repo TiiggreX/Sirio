@@ -23,13 +23,20 @@ header {
   box-sizing: border-box;
 }
 
+@media screen and ( width <= 425px ) {
+  header {
+    display: none;
+  }
+}
+
 .Title {
   width: fit-content;
   margin-left: 20px;
   font-family: "Lucida Sans";
-  padding: 5px 17px;
-  border-radius: 15px 50%;
-  border: 1px solid #fff;
+  font-style: italic;
+  padding: 8px 17px 5px;
+  border-radius: 15px;
+  border: 2px solid #fff;
   background-color: #114;
 }
 

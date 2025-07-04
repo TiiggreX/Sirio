@@ -12,4 +12,11 @@ function Activity(db){
     })
 }
 
-module.exports = { Users, Activity }
+function Book(db){
+    db.all(`SELECT * FROM Book`, (err, info) => {
+        if(err) throw err;
+        console.log(info)
+    })
+}
+
+module.exports = { Users, Activity, Book }
